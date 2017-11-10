@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Comparison Tool</title>
+  </head>
+  <body>
+    <a href="/create/product">Create Product</a> | <a href="/create/store">Create Store</a>
+    <br>
+    <% for(var i = 0; i<products.length; i++){ %>
+      <br>
+      <%= products[i].name %> - <%=products[i].store_name%> - $<%= products[i].price %> - <a href="">Add to comparison</a>
+    <% } %>
+  </body>
+</html>
