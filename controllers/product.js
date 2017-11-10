@@ -32,4 +32,24 @@ module.exports = {
         res.redirect("/");
       })
   },
+
+  addCompare: function(req, res){
+    knex("product")
+      .where("id", req.params.id)
+      .then((product)=>{
+        if(req.session.compare.length == 2){
+          req.session.compare.pop();
+        }
+        req.session.compare.push(product[0]);
+        req.session.save(()=>{
+          res.redirect('/');
+        })
+
+      })
+  },
+
+  showComparison: function(req, res){
+
+    res.render("compare", {product1: req.session.compare[0], product2: req.session.compare[1]});
+  }
 }

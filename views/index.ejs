@@ -9,7 +9,9 @@
     <br>
     <% for(var i = 0; i<products.length; i++){ %>
       <br>
-      <%= products[i].name %> - <%=products[i].store_name%> - $<%= products[i].price %> - <a href="">Add to comparison</a>
+      <%= products[i].name %> - <%=products[i].store_name%> - $<%= products[i].price %> - <a href="/compare/<%= products[i].id %>">Add to comparison</a>
     <% } %>
+    <br>
+    <a href="/showComparison">Show Comparison</a>
   </body>
 </html>
