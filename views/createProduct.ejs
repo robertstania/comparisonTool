@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Product</title>
+  </head>
+  <body>
+
+    <form action="/create/product" method="post">
+      <fieldset>
+        <legend>Create Product</legend>
+        <input type="text" name="name" placeholder="Product Name"> <br> <br>
+        <select name="store_id">
+          <% for(var i = 0; i<stores.length; i++){ %>
+            <option value="<%= stores[i].id %>"> <%= stores[i].name %> </option>
+          <% } %>
+        </select> <br> <br>
+        <input type="number" step=".01" name="price" placeholder="price"> <br> <br>
+        <textarea name="description" rows="8" cols="80" placeholder="Product description"></textarea><br> <br>
+
+        <input type="submit" value="Add">
+      </fieldset>
+    </form>
+    <a href="/">Home Page</a>
+  </body>
+</html>
