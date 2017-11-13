@@ -8,7 +8,8 @@ module.exports = {
       .join("store", "product.store_id", "store.id")
       .then((result)=>{
         console.log(result);
-        res.render("index", {products: result});
+
+        res.render("index", {products: result, comparisonList: req.session.compare});
       })
   },
 
@@ -38,7 +39,7 @@ module.exports = {
       .where("id", req.params.id)
       .then((product)=>{
         if(req.session.compare.length == 2){
-          req.session.compare.pop();
+          req.session.compare.shift();
         }
         req.session.compare.push(product[0]);
         req.session.save(()=>{
@@ -46,6 +47,12 @@ module.exports = {
         })
 
       })
+  },
+
+  removeCompare: function(req, res){
+    req.session.compare = req.session.compare.filter(item => item.id!=req.params.id);
+
+    res.redirect("/")
   },
 
   showComparison: function(req, res){

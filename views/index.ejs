@@ -9,7 +9,11 @@
     <br>
     <% for(var i = 0; i<products.length; i++){ %>
       <br>
-      <%= products[i].name %> - <%=products[i].store_name%> - $<%= products[i].price %> - <a href="/compare/<%= products[i].id %>">Add to comparison</a>
+      <% if (comparisonList.filter(item => item.id == products[i].id).length >0){ %>
+        <%= products[i].name %> - <%=products[i].store_name%> - $<%= products[i].price %> - <a href="/remove/compare/<%= products[i].id %>">Remove from comparison</a>
+      <% }else{ %>
+        <%= products[i].name %> - <%=products[i].store_name%> - $<%= products[i].price %> - <a href="/compare/<%= products[i].id %>">Add to comparison</a>
+      <% } %>
     <% } %>
     <br>
     <a href="/showComparison">Show Comparison</a>

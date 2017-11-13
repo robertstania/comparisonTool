@@ -13,6 +13,8 @@ module.exports = function(app){
 
   app.get("/create/product", product.createProductForm);
 
+  app.get("/remove/compare/:id", product.removeCompare);
+
   app.post("/create/product", product.create);
 
   app.get("/compare/:id", product.addCompare);
